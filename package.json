@@ -1,0 +1,19 @@
+{
+  "name": "sidreddy-website",
+  "version": "1.0.0",
+  "description": "Personal Website for Sid Reddy",
+  "scripts": {
+    "dev": "http-server . -p 3000 -c-1 -o /",
+    "start": "http-server . -p 3000",
+    "server": "http-server . -p 3000 -c-1"
+  },
+  "keywords": [
+    "portfolio",
+    "personal-website"
+  ],
+  "author": "Sid Reddy",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

@@ -1,0 +1,38 @@
+/* animations and timing for the hero section */
+
+@keyframes tracking-in-contract-bck-top {
+  0% {
+    transform: scale(2) translateZ(400px) translateY(-300px);
+    opacity: 0;
+  }
+  35% {
+    opacity: 0.6;
+  }
+  80% {
+    transform: scale(1.2) translateZ(0) translateY(0);
+    opacity: 1;
+  }
+}
+
+.tracking-in-contract-bck-top {
+  animation: tracking-in-contract-bck-top 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+}
+
+@keyframes scale-in-center {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.scale-in-center {
+  animation: scale-in-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.anim-delay-700 { animation-delay: 0.7s; }
+.anim-delay-900 { animation-delay: 0.9s; }
+.anim-delay-1100 { animation-delay: 1.1s; }
