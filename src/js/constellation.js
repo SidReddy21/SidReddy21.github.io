@@ -6,9 +6,9 @@
   let diag = 0;
   let range = 0;
   const resize = () => {
-    const rect = canvas.getBoundingClientRect();
-    canvas.width = rect.width;
-    canvas.height = rect.height;
+    // Canvas is fixed to viewport and particles only exist within viewport
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
     diag = Math.hypot(canvas.width, canvas.height);
     range = 0.15 * diag;
   };
@@ -250,19 +250,21 @@
   requestAnimationFrame(frame);
 
   const handleClick = (event) => {
-    const rect = canvas.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
+    // Use viewport coordinates directly
+    const x = event.clientX;
+    const y = event.clientY;
     particles.push(new Particle(x, y));
     graphs.push(new EdgeGraph(particles.length - 1));
   };
 
-  canvas.addEventListener('click', handleClick);
+  // Add click handler to document body so clicks work everywhere
+  document.body.addEventListener('click', handleClick);
+  
   window.addEventListener('resize', resize);
 
   window.addEventListener('beforeunload', () => {
     running = false;
-    canvas.removeEventListener('click', handleClick);
+    document.body.removeEventListener('click', handleClick);
     window.removeEventListener('resize', resize);
   });
 })();
