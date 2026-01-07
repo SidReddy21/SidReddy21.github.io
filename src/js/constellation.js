@@ -264,7 +264,4 @@
 
   window.addEventListener('beforeunload', () => {
     running = false;
-    document.body.removeEventListener('click', handleClick);
-    window.removeEventListener('resize', resize);
-  });
-})();
+    document.body.removeEventL

@@ -66,6 +66,39 @@ footer {
   color: var(--footer-text);
 }
 
+.floating-arrow {
+  position: absolute;
+  bottom: 2.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3.25rem;
+  height: 3.25rem;
+  border: 2px solid var(--button-border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--button-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  animation: bob 2.2s ease-in-out infinite;
+  z-index: 20;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.floating-arrow:hover {
+  transform: translateX(-50%) translateY(-6px) scale(1.05);
+  border-color: var(--button-hover);
+  color: var(--button-hover);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+.arrow-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 .copy-notification {
   position: fixed;
   bottom: 20px;

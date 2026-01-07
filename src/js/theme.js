@@ -53,6 +53,15 @@
         });
       });
     }
+
+    // smooth scroll to the "What I've been up to" section
+    const scrollArrow = document.getElementById('scroll-arrow');
+    const recentWorkSection = document.getElementById('recent-work');
+    if (scrollArrow && recentWorkSection) {
+      scrollArrow.addEventListener('click', () => {
+        recentWorkSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
   });
   
   // watch for key presses for light/dark theme
@@ -113,6 +122,7 @@
       originalColors = {
         backgroundColor: document.body.style.backgroundColor,
         buttons: [],
+        scrollArrow: null,
         constellationColors: null
       };
       
@@ -126,6 +136,17 @@
           hoverColor: btn.dataset.hoverColor
         });
       });
+
+      // capture arrow colors
+      const scrollArrow = document.getElementById('scroll-arrow');
+      if (scrollArrow) {
+        originalColors.scrollArrow = {
+          element: scrollArrow,
+          borderColor: scrollArrow.style.borderColor,
+          color: scrollArrow.style.color,
+          backgroundColor: scrollArrow.style.backgroundColor
+        };
+      }
       
       // capture constellation colors
       if (window.constellationColors) {
@@ -203,6 +224,14 @@
       // stash the hover color so we can use it later
       btn.dataset.hoverColor = `rgb(${buttonHoverColor.r}, ${buttonHoverColor.g}, ${buttonHoverColor.b})`;
     });
+
+    // update arrow to match buttons
+    const scrollArrow = document.getElementById('scroll-arrow');
+    if (scrollArrow) {
+      scrollArrow.style.borderColor = `rgb(${buttonColor.r}, ${buttonColor.g}, ${buttonColor.b})`;
+      scrollArrow.style.color = `rgb(${buttonColor.r}, ${buttonColor.g}, ${buttonColor.b})`;
+      scrollArrow.style.backgroundColor = 'transparent';
+    }
     
     // update the constellation animation colors too
     if (window.constellationColors) {
@@ -237,6 +266,14 @@
       btn.element.style.borderColor = btn.borderColor;
       btn.element.dataset.hoverColor = btn.hoverColor || '';
     });
+
+    // restore arrow
+    if (originalColors.scrollArrow) {
+      const arrow = originalColors.scrollArrow.element;
+      arrow.style.borderColor = originalColors.scrollArrow.borderColor;
+      arrow.style.color = originalColors.scrollArrow.color;
+      arrow.style.backgroundColor = originalColors.scrollArrow.backgroundColor;
+    }
     
     // restore constellation colors
     if (originalColors.constellationColors && window.constellationColors) {
