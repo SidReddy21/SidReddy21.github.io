@@ -29,9 +29,9 @@ npm run dev
 ```
 
 ## Easter Egg
-Try typing "awesome"
-Try typing "dark"
-Try typing "light"
+- Try typing "awesome"
+- Try typing "dark"
+- Try typing "light"
 
 ## Issues & Bug Fixes
 If there are any issues or questions regarding the repo please contact Sid Reddy via email
